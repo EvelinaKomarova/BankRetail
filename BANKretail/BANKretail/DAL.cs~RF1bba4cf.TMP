@@ -1,0 +1,193 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Collections;
+using System.Data.SqlClient;
+using System.Data.Common;
+using System.Globalization;
+
+
+namespace BANKretail
+{
+    class DAL
+    {
+        //строка соединения
+        string connectionString = @"Data Source=ИМЯКОМПЬЮТЕРА\SQLEXPRESS;Initial Catalog=BANK;Integrated Security=True;";
+
+        public ArrayList GetAllDebitors()
+        { 
+            ArrayList allDebitors = new ArrayList();
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                SqlCommand com = new SqlCommand("SELECT * FROM Debitors Order By Name", con);
+
+                try
+                {
+                    con.Open();
+                    SqlDataReader dr = com.ExecuteReader();
+
+                    if (dr.HasRows)
+                        foreach (DbDataRecord result in dr)
+                            allDebitors.Add(result);
+                }
+                catch
+                { 
+                
+                }
+            }
+            return allDebitors;
+        }
+
+        internal ArrayList GetAllCreditsForDebitor(string debitorID)
+        {
+            ArrayList allCredits = new ArrayList();
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                string query = String.Format("SELECT * FROM Credits Where DebitorID='{0}' Order By OpenDate", debitorID);
+                SqlCommand com = new SqlCommand(query, con);
+                try
+                {
+                    con.Open();
+                    SqlDataReader dr = com.ExecuteReader();
+
+                    if (dr.HasRows)
+                        foreach (DbDataRecord result in dr)
+                            allCredits.Add(result);
+                }
+                catch
+                {
+
+                }
+            }
+
+            return allCredits;
+        }
+
+        internal ArrayList GetAllPaymentsForCredit(string creditID)
+        { 
+            ArrayList allPayments = new ArrayList();
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                string query = String.Format("SELECT * FROM Payments Where CreditsID='{0}' Order By PaymentDate", creditID);
+                SqlCommand com = new SqlCommand(query, con);
+                try
+                {
+                    con.Open();
+                    SqlDataReader dr = com.ExecuteReader();
+
+                    if (dr.HasRows)
+                        foreach (DbDataRecord result in dr)
+                            allPayments.Add(result);
+                }
+                catch
+                {
+
+                }
+            }
+
+            return allPayments;
+        }
+
+        public bool SaveNewDebitor(string ID, string Name, 
+            string PostNumber, string PhoneNumber)
+        {
+            bool flagResult = false;
+
+            string query = string.Format("INSERT INTO Debitors "+
+                "([ID], [Name], [PostNumber], [PhoneNumber]) " +
+                "VALUES ('{0}', '{1}', '{2}', '{3}')", 
+                ID, Name, PostNumber, (PhoneNumber != String.Empty) ? PhoneNumber : null);
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                SqlCommand com = new SqlCommand(query, con);
+                try
+                {
+                    con.Open();
+                    if (com.ExecuteNonQuery() == 1)
+                        flagResult = true;
+                }
+                catch
+                { 
+                
+                }
+            }
+
+            return flagResult;
+        }
+
+        public bool SaveNewCredit(Guid ID, Guid debitorID, int amount,
+            int balance, DateTime openDate)
+        {
+            string query = String.Format("INSERT INTO Credits "+
+                "(ID, DebitorID, Amount, Balance, OpenDate)"+
+                "VALUES ('{0}', '{1}', '{2}', '{3}', '{4}')", 
+                ID, debitorID, amount, balance, openDate);
+
+            bool flagResult = false;
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                SqlCommand com = new SqlCommand(query, con);
+                try
+                {
+                    con.Open();
+                    if (com.ExecuteNonQuery() == 1)
+                        flagResult = true;
+                }
+                catch(Exception)
+                {
+
+                }
+            }
+            return flagResult;
+        }
+
+        internal bool SaveNewPayment(Guid ID, Guid creditID, 
+            decimal paymentAmount, DateTime dateTime)
+        {
+            bool flag = true;
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+                SqlTransaction sqlTransact = con.BeginTransaction();
+                SqlCommand com = con.CreateCommand();
+                com.Transaction = sqlTransact;
+
+                try
+                {
+                    string payAmount = paymentAmount.ToString(CultureInfo.InvariantCulture.NumberFormat);
+                    string query = string.Format("INSERT INTO Payments (ID, CreditsID, Amount, PaymentDate) VALUES " +
+                        "('{0}', '{1}', '{2}', '{3}')", ID, creditID, payAmount, dateTime);
+                    com.CommandText = query;
+                    com.ExecuteNonQuery();
+
+                    query = string.Format("UPDATE Credits SET Balance = (Balance - {0}) WHERE ID = '{1}'", 
+                        payAmount, creditID);
+                    com.CommandText = query;
+                    com.ExecuteNonQuery();
+
+                    sqlTransact.Commit();
+                }
+                catch(Exception)
+                {
+                    sqlTransact.Rollback();
+                    flag = false;
+                }
+                finally
+                {
+                    if (con.State == System.Data.ConnectionState.Open)
+                        con.Dispose();
+                }
+            }
+
+            return flag;
+        }
+
+        internal bool SaveDBToLocalFile()
+        {
+            return true;
+        }
+    }
+}

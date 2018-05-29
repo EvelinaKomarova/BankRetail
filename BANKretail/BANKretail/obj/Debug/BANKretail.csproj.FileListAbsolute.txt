@@ -1,0 +1,33 @@
+D:\Users\Администратор2\Documents\Visual Studio 2008\Projects\BANKretail\BANKretail\bin\Debug\BANKretail.exe
+D:\Users\Администратор2\Documents\Visual Studio 2008\Projects\BANKretail\BANKretail\bin\Debug\BANKretail.pdb
+D:\Users\Администратор2\Documents\Visual Studio 2008\Projects\BANKretail\BANKretail\obj\Debug\ResolveAssemblyReference.cache
+D:\Users\Администратор2\Documents\Visual Studio 2008\Projects\BANKretail\BANKretail\obj\Debug\BANKretail.MainForm.resources
+D:\Users\Администратор2\Documents\Visual Studio 2008\Projects\BANKretail\BANKretail\obj\Debug\BANKretail.Properties.Resources.resources
+D:\Users\Администратор2\Documents\Visual Studio 2008\Projects\BANKretail\BANKretail\obj\Debug\BANKretail.csproj.GenerateResource.Cache
+D:\Users\Администратор2\Documents\Visual Studio 2008\Projects\BANKretail\BANKretail\obj\Debug\BANKretail.exe
+D:\Users\Администратор2\Documents\Visual Studio 2008\Projects\BANKretail\BANKretail\obj\Debug\BANKretail.pdb
+D:\Users\Администратор2\Documents\Visual Studio 2008\Projects\BANKretail\BANKretail\obj\Debug\BANKretail.NewDebitor.resources
+D:\Users\Администратор2\Documents\Visual Studio 2008\Projects\BANKretail\BANKretail\obj\Debug\BANKretail.NewCredit.resources
+D:\Users\Администратор2\Documents\Visual Studio 2008\Projects\BANKretail\BANKretail\obj\Debug\BANKretail.NewPayment.resources
+C:\Users\Evelina\Desktop\BANKretail\BANKretail\obj\Debug\BANKretail.exe
+C:\Users\Evelina\Desktop\BANKretail\BANKretail\obj\Debug\BANKretail.pdb
+C:\Users\Evelina\Desktop\BANKretail\BANKretail\bin\Debug\BANKretail.exe
+C:\Users\Evelina\Desktop\BANKretail\BANKretail\bin\Debug\BANKretail.pdb
+C:\Users\Evelina\Desktop\BANKretail\BANKretail\obj\Debug\BANKretail.csprojResolveAssemblyReference.cache
+C:\Users\Evelina\Desktop\BANKretail\BANKretail\obj\Debug\BANKretail.MainForm.resources
+C:\Users\Evelina\Desktop\BANKretail\BANKretail\obj\Debug\BANKretail.NewCredit.resources
+C:\Users\Evelina\Desktop\BANKretail\BANKretail\obj\Debug\BANKretail.NewDebitor.resources
+C:\Users\Evelina\Desktop\BANKretail\BANKretail\obj\Debug\BANKretail.NewPayment.resources
+C:\Users\Evelina\Desktop\BANKretail\BANKretail\obj\Debug\BANKretail.Properties.Resources.resources
+C:\Users\Evelina\Desktop\BANKretail\BANKretail\obj\Debug\BANKretail.csproj.GenerateResource.Cache
+\\Vboxsvr\виртуалка\BANKretail\BANKretail\obj\Debug\BANKretail.exe
+\\Vboxsvr\виртуалка\BANKretail\BANKretail\obj\Debug\BANKretail.pdb
+\\Vboxsvr\виртуалка\BANKretail\BANKretail\bin\Debug\BANKretail.exe
+\\Vboxsvr\виртуалка\BANKretail\BANKretail\bin\Debug\BANKretail.pdb
+\\Vboxsvr\виртуалка\BANKretail\BANKretail\obj\Debug\BANKretail.csprojResolveAssemblyReference.cache
+\\Vboxsvr\виртуалка\BANKretail\BANKretail\obj\Debug\BANKretail.MainForm.resources
+\\Vboxsvr\виртуалка\BANKretail\BANKretail\obj\Debug\BANKretail.NewCredit.resources
+\\Vboxsvr\виртуалка\BANKretail\BANKretail\obj\Debug\BANKretail.NewDebitor.resources
+\\Vboxsvr\виртуалка\BANKretail\BANKretail\obj\Debug\BANKretail.NewPayment.resources
+\\Vboxsvr\виртуалка\BANKretail\BANKretail\obj\Debug\BANKretail.Properties.Resources.resources
+\\Vboxsvr\виртуалка\BANKretail\BANKretail\obj\Debug\BANKretail.csproj.GenerateResource.Cache
